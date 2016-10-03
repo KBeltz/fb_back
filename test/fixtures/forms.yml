@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  template: one
+  recipient_user_id: 1
+  date_filled_out: 2016-10-03
+  is_complete: MyString
+  update_by: 1
+  insert_by: 1
+  insert_time: 2016-10-03 10:36:23
+  update_time: 2016-10-03 10:36:23
+
+two:
+  template: two
+  recipient_user_id: 1
+  date_filled_out: 2016-10-03
+  is_complete: MyString
+  update_by: 1
+  insert_by: 1
+  insert_time: 2016-10-03 10:36:23
+  update_time: 2016-10-03 10:36:23
