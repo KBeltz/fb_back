@@ -25,3 +25,4 @@ vendor/
 # Ignore RubyMine files
 .idea
 .idea/
+workspace.xml
