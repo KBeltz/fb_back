@@ -1,3 +1,3 @@
-# class TemplateFieldSerializer < ActiveModel::Serializer
-#   attributes :id
-# end
+class TemplateFieldSerializer < ActiveModel::Serializer
+  attributes :id
+end
