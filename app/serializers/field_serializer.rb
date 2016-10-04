@@ -1,3 +1,3 @@
-class FieldSerializer < ActiveModel::Serializer
-  attributes :id
-end
+# class FieldSerializer < ActiveModel::Serializer
+#   attributes :id
+# end
