@@ -1,5 +1,6 @@
 class Form < ApplicationRecord
   self.table_name = 'app_bldr_forms'
+
   has_many :submissions
   
   belongs_to :template
