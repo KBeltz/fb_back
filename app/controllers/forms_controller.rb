@@ -3,7 +3,11 @@ class FormsController < ApplicationController
 
   # GET /forms
   def index
-    @forms = Form.all
+    if params["user_id"]
+      @forms = Form.where( is_complete: 'N', user: params["user_id"] )
+    else
+      @forms = Form.all
+    end
 
     render json: @forms
   end
