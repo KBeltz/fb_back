@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :template_fields
+  resources :template_fields, :path => "template-fields"
   resources :submissions
   resources :forms
   resources :fields
