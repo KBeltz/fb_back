@@ -2,6 +2,7 @@
 # Rescue StandardError acts as a Fallback mechanism to handle any exception
 module Error
   module ErrorHandler
+    # self.included is invoked when the class that includes this module is run (http://apidock.com/ruby/Module/included)
     def self.included(clazz)
       clazz.class_eval do
         rescue_from ActiveRecord::RecordNotFound do |e|
