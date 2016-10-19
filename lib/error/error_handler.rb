@@ -10,6 +10,7 @@ module Error
           respond(e.error, e.status, e.message.to_s)
         end
         rescue_from StandardError do |e|
+          # byebug
           respond(:standard_error, 500, e.to_s)
         end
       end
