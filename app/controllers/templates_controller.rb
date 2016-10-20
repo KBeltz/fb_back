@@ -16,7 +16,7 @@ class TemplatesController < ApplicationController
   # POST /templates
   def create
     @template = Template.new(template_params)
-
+    byebug
     if @template.save
       render json: @template, status: :created, location: @template
     else
@@ -46,6 +46,9 @@ class TemplatesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def template_params
-      params.require(:template).permit(:template_name, :insert_by, :update_by, :update_time, :insert_time)
+      params.require(:template).permit(:attributes, :relationships, :data, :type, :template_name, :insert_by, :update_by, :update_time, :insert_time)
+      # ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:template_name, :insert_by, :update_by, :update_time, :insert_time, :attributes, :relationships, :data, :type])
+      # ActiveModelSerializers::Deserialization.jsonapi_parse!(params)
+      # {"data"=>{"attributes"=>{"template-name"=>"This is a name!"}, "relationships"=>{"user"=>{"data"=>{"type"=>"users", "id"=>"27"}}}, "type"=>"templates"}}
     end
 end
