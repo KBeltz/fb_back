@@ -1,5 +1,5 @@
 class TemplateSerializer < ActiveModel::Serializer
-  attributes :id, :template_name, :update_by, :update_time, :insert_by, :insert_time
+  attributes :id, :template_name, :update_by, :update_time, :insert_by_id, :insert_time
 
   belongs_to :user, :foreign_key => "insert_by", :class_name => 'User'
 
