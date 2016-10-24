@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = User.filter_users(params)
-
+    
     render json: @users
   end
 
