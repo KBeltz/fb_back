@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   def self.filter_users(parameters)
     if parameters["isComplete"] == 'N'
-      forms = Form.where(is_complete: 'N')
+      forms = Form.where( is_complete: 'N' )
       @users = []
       forms.each do |form|
         @users << form.user
