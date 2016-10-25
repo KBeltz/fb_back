@@ -11,6 +11,7 @@ class User < ApplicationRecord
       forms.each do |form|
         @users << form.user
       end
+      @users.uniq
     else
       @users = User.all
     end

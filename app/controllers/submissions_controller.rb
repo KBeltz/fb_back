@@ -18,9 +18,9 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new(submission_params)
 
     if @submission.save
-      render json: @submission, status: :created, location: @submission
+      render jsonapi: @submission, status: :created, location: @submission
     else
-      render json: @submission.errors, status: :unprocessable_entity
+      render jsonapi: @submission.errors, status: :unprocessable_entity
     end
   end
 
@@ -46,6 +46,7 @@ class SubmissionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def submission_params
-      params.require(:submission).permit(:form_id, :field_id, :submission_text, :insert_by, :update_by, :insert_time, :update_time)
+      # params.require(:submission).permit(:form_id, :field_id, :submission_text, :insert_by, :update_by, :insert_time, :update_time)
+      ActiveModelSerializers::Deserialization.jsonapi_parse!(params)
     end
 end
