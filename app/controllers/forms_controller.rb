@@ -51,6 +51,7 @@ class FormsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def form_params
-      params.require(:form).permit(:template_id, :recipient_user_id, :date_filled_out, :is_complete, :update_by, :insert_by, :insert_time, :update_time)
+      # params.require(:form).permit(:template_id, :recipient_user_id, :date_filled_out, :is_complete, :update_by, :insert_by, :insert_time, :update_time)
+      ActiveModelSerializers::Deserialization.jsonapi_parse!(params)
     end
 end
