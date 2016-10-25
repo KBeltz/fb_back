@@ -15,13 +15,19 @@ class TemplatesController < ApplicationController
 
   # POST /templates
   def create
-    # puts("template_params: " + template_params.to_s)
+    puts "template_params: " + template_params.to_s
+    # user = User.find_by(user_id: 27)
     @template = Template.new(template_params)
-
+    # if template_params['insert_by_id']
+    #   user = User.find_by(id: 27)
+    # end
+    # puts "user: " + user.to_s
+    # @template.insert_by_id = user
+    # puts "@template.insert_by: " + @template.insert_by.to_s
     if @template.save
       render json: @template, status: :created, location: @template
     else
-      puts("Errors: " + @template.errors.full_messages.first)
+      puts "Errors: " + @template.errors.full_messages.first
       render json: @template.errors, status: :unprocessable_entity
     end
   end
