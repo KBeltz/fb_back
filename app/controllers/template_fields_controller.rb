@@ -46,6 +46,6 @@ class TemplateFieldsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def template_field_params
-      params.require(:template_field).permit(:template_id, :field_id, :order_num, :update_by, :insert_by, :update_time, :insert_time)
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:template_id, :field_id, :order_num, :update_by, :insert_by, :update_time, :insert_time])
     end
 end
