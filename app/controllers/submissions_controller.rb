@@ -47,6 +47,6 @@ class SubmissionsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def submission_params
       # params.require(:submission).permit(:form_id, :field_id, :submission_text, :insert_by, :update_by, :insert_time, :update_time)
-      ActiveModelSerializers::Deserialization.jsonapi_parse!(params)
+      ActiveModelSerializers::Deserialization.jsonapi_parse!(params, only: [:form, :field, :submission_text, :insert_by, :update_by, :insert_time, :update_time])
     end
 end
