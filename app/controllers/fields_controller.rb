@@ -46,6 +46,7 @@ class FieldsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def field_params
-      params.require(:field).permit(:field_name, :update_by, :insert_by, :update_time, :insert_time)
+      # params.require(:field).permit(:field_name, :update_by, :insert_by, :update_time, :insert_time)
+      ActiveModelSerializers::Deserialization.jsonapi_parse!(params, only: [:field_name, :update_by, :insert_by, :update_time, :insert_time])
     end
 end
