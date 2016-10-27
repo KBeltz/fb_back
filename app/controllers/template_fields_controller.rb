@@ -15,11 +15,13 @@ class TemplateFieldsController < ApplicationController
 
   # POST /template_fields
   def create
+    puts "template_field_params: " + template_field_params.to_s
     @template_field = TemplateField.new(template_field_params)
 
     if @template_field.save
       render json: @template_field, status: :created, location: @template_field
     else
+      puts "Errors: " + @template_field.errors.full_messages.first
       render json: @template_field.errors, status: :unprocessable_entity
     end
   end
@@ -46,6 +48,7 @@ class TemplateFieldsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def template_field_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:template_id, :field_id, :order_num, :update_by, :insert_by, :update_time, :insert_time])
+      # be sure that unless you have column name/alias weirdness, references to parent/child objects should be ":template" not ":template_id"
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params, only: [:template, :field, :order_num, :update_by, :insert_by, :update_time, :insert_time])
     end
 end
